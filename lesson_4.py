@@ -11,7 +11,9 @@ response = requests.get('https://lenta.ru/', headers=header)
 
 dom = html.fromstring(response.text)
 
-news_name = dom.xpath('//section[@class="row b-top7-for-main js-top-seven"]//time[@class="g-time"]/text()')
+news_name = dom.xpath('//section[@class="row b-top7-for-main js-top-seven"]//div[contains(@class, "item")]/a//text()')
+
+link = dom.xpath('//section[@class="row b-top7-for-main js-top-seven"]//div[contains(@class, "item")]/a/@href')
 
 #link = dom.xpahp("//")
 #date_of_publication = dom.xpahp("//")
@@ -35,5 +37,6 @@ for item in items:
 
     items_list.append(items_data)'''
 
-pprint(len(news_name))
+pprint(news_name)
 
+pprint(link)
